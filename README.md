@@ -21,9 +21,9 @@ Use
 
 	where:
 
-	- `rootdir` is your "projects" folder: all subdirectories will be scanned for git repos and if found, their commits will be added to a csv file in the current working dir 
-	- `username` is the git username you want to display activities of
-	- `startDt` and `endDt` form a date range to filter on. Format: YYYY-MM-DD
+- `rootdir` is your "projects" folder: all subdirectories will be scanned for git repos and if found, their commits will be added to a csv file in the current working dir 
+- `username` is the git username you want to display activities of
+- `startDt` and `endDt` form a date range to filter on. Format: YYYY-MM-DD
 
 	None of the args are optional.
 

@@ -5,6 +5,10 @@ This is my weekend project to create a view similar to Github's contributions vi
 
 - most of my projects are single dev: me
 - some of my projects are hosted in places other than github and some not at all
+- I'd like to get a view across all projects, but with each project's detail readily available.
+
+Here's a screenshot of the current status:
+<img src="dbtc_ss.png"/>
 
 Installation
 -------------

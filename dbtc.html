@@ -123,27 +123,6 @@
               .attr("height", gridSize.y)
               .style("fill", "green")
               .transition().duration(1000);
-
-        /*
-
-          var legend = svg.selectAll(".legend")
-              .data([0].concat(colorScale.quantiles()), function(d) { return d; })
-              .enter().append("g")
-              .attr("class", "legend");
-
-          legend.append("rect")
-            .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height)
-            .attr("width", legendElementWidth)
-            .attr("height", gridSize / 2)
-            .style("fill", function(d, i) { return colorbrewer.YlGnBu[9][i]; });
-
-          legend.append("text")
-            .attr("class", "mono")
-            .text(function(d) { return "≥ " + Math.round(d); })
-            .attr("x", function(d, i) { return legendElementWidth * i; })
-            .attr("y", height + gridSize);
-      */
       });
     </script>
     <p>Credits: <a href="http://bl.ocks.org/tjdecke/5558084">This d3 sample page.</a>

@@ -50,10 +50,10 @@
           repos.forEach(function(d,i){ repoIndexes[d.key] = i ;});
 
 	      var margin = { top: 50, right: 0, bottom: 100, left: 30 },
-	          gridSize = 20,
+	          gridSize = { x: 10, y: 15 },
 	          daysInAYear = d3.range(1,366),
-	          width = gridSize*daysInAYear.length,
-	          height = gridSize*repos.length,
+	          width = gridSize.x *daysInAYear.length,
+	          height = gridSize.y *repos.length,
 	          repoLabelsWidth =100;
 
           var svg = d3.select("#chart").append("svg")
@@ -67,7 +67,7 @@
               .enter().append("text")
                 .text(function (d) { return d.key; })
                 .attr("x", repoLabelsWidth)
-                .attr("y", function (d, i) { return i * gridSize; })
+                .attr("y", function (d, i) { return i * gridSize.y; })
                 .style("text-anchor", "end")
                 // .attr("transform", "translate(-6," + gridSize / 1.5 + ")")
                 .attr("class", function (d) { return "repoLabel mono axis axis-project"; });
@@ -76,7 +76,7 @@
               .data(daysInAYear)
               .enter().append("text")
                 .text(function(d) { return (d % 7 == 0 ) ? d: ""; })
-                .attr("x", function(d, i) { return repoLabelsWidth + 10 + (i * gridSize); })
+                .attr("x", function(d, i) { return repoLabelsWidth + 10 + (i * gridSize.x); })
                 .attr("y", 0)
                 .style("text-anchor", "top")
                 // this took a long time to figure out, but am commenting this out as it doesnt make sense anymore. sigh.
@@ -101,26 +101,26 @@
           var gridDisplay = svg.selectAll(".daygrid")
               .data(grid)
               .enter().append("rect")
-              .attr("x", function(d) { return repoLabelsWidth + 10 + (d % 366) * gridSize; })
-              .attr("y", function(d) { return Math.floor(d / 366) * gridSize; })
+              .attr("x", function(d) { return repoLabelsWidth + 10 + (d % 366) * gridSize.x; })
+              .attr("y", function(d) { return Math.floor(d / 366) * gridSize.y; })
               .attr("rx", 4)
               .attr("ry", 4)
               .attr("class", "daygrid bordered")
-              .attr("width", gridSize)
-              .attr("height", gridSize)
+              .attr("width", gridSize.x)
+              .attr("height", gridSize.y)
               .style("fill", "white")
               .transition().duration(1000);
 
           var chainDisplay = svg.selectAll(".day")
               .data(valuesFor2012)
               .enter().append("rect")
-              .attr("x", function(d) { var x = repoLabelsWidth + 10 + ((d.dayOfYear-1) * gridSize); console.log("logx=" + d.dayOfYear + ", calcx=" + x); return x; })
-              .attr("y", function(d) { var y= repoIndexes[d.repo] * gridSize; console.log("logy=" + d.repo + ", calcy=" + y); return y; })
+              .attr("x", function(d) { return repoLabelsWidth + 10 + ((d.dayOfYear-1) * gridSize.x); })
+              .attr("y", function(d) { return repoIndexes[d.repo] * gridSize.y; })
               .attr("rx", 4)
               .attr("ry", 4)
               .attr("class", "day bordered")
-              .attr("width", gridSize)
-              .attr("height", gridSize)
+              .attr("width", gridSize.x)
+              .attr("height", gridSize.y)
               .style("fill", "green")
               .transition().duration(1000);
 

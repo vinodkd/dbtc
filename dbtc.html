@@ -75,11 +75,12 @@
           var dayLabels = svg.selectAll(".dayLabel")
               .data(daysInAYear)
               .enter().append("text")
-                .text(function(d) { return d; })
+                .text(function(d) { return (d % 7 == 0 ) ? d: ""; })
                 .attr("x", function(d, i) { return repoLabelsWidth + 10 + (i * gridSize); })
                 .attr("y", 0)
-                .style("text-anchor", "middle")
-                .attr("transform", function(d,i) { return "rotate(-45, "+ (repoLabelsWidth + (d-1)*gridSize) +" 0)" })
+                .style("text-anchor", "top")
+                // this took a long time to figure out, but am commenting this out as it doesnt make sense anymore. sigh.
+                // .attr("transform", function(d,i) { return "rotate(-45, "+ (repoLabelsWidth + (d-1)*gridSize.x) +" 0)" })
                 .attr("class", function(d, i) { return "dayLabel mono axis axis-day"; });
 
           var chainByYearNRepo = d3.nest()

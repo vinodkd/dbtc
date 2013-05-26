@@ -7,3 +7,4 @@ todo.md
 [ ] compress display
 [ ] add credits to d3 example used
 [ ] use local copy of d3.js
+[X] label day axis once per week
